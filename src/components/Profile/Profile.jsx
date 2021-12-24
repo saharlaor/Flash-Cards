@@ -9,7 +9,7 @@ export class Profile extends Component {
   state = { cards: [] };
 
   generateCards = () => {
-    return this.state.cards.map(({ card }, i) => {
+    return this.state.cards.map((card, i) => {
       return <Card question={card.question} answer={card.answer} key={i} />;
     });
   };
