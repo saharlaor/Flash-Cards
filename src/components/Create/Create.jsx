@@ -1,4 +1,6 @@
 import React, { Component, createRef } from "react";
+import { v4 as uuid } from "uuid";
+
 import "./Create.css";
 
 export class Create extends Component {
@@ -8,8 +10,9 @@ export class Create extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     if (Object.values(this.state).every((val) => val)) {
-      this.props.addCard(this.state);
+      this.props.addCard({ ...this.state, id: uuid() });
     }
+    //TODO: Add error display when invalid
   };
 
   render() {

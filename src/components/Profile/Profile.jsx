@@ -22,7 +22,15 @@ export class Profile extends Component {
 
   generateCards = () => {
     return this.state.cards.map((card, i) => {
-      return <Card question={card.question} answer={card.answer} key={i} />;
+      return (
+        <Card
+          question={card.question}
+          answer={card.answer}
+          key={card.id}
+          id={card.id}
+          editHandler={this.handleEdit}
+        />
+      );
     });
   };
 

@@ -1,17 +1,46 @@
-import React from "react";
+import React, { Component } from "react";
+
+import Update from "../Update/Update";
+
 import "./Card.css";
 
-function Card(props) {
-  return (
-    <div className="Card">
-      <h3>Question</h3>
-      <p>{props.question}</p>
-      <h3>Answer</h3>
-      <p>{props.answer}</p>
-      <button onClick={props.handleDelete}>Delete</button>
-      <button onClick={props.handleEdit}>Edit</button>
-    </div>
-  );
+class Card extends Component {
+  state = { editMode: false };
+
+  handleUpdate = (newDetails) => {
+    this.props.editHandler(this.props.id, newDetails);
+    this.handleEditVis();
+  };
+
+  handleEditVis = () => {
+    this.setState({ editMode: !this.state.editMode });
+  };
+
+  render() {
+    return (
+      <div className="Card">
+        {this.state.editMode ? (
+          <Update
+            question={this.props.question}
+            answer={this.props.answer}
+            handleUpdate={this.handleUpdate}
+            handleCancel={this.handleEditVis}
+          />
+        ) : (
+          <>
+            <h3>Question</h3>
+            <p>{this.props.question}</p>
+            <h3>Answer</h3>
+            <p>{this.props.answer}</p>
+            <button onClick={() => this.props.handleDelete(this.props.id)}>
+              Delete
+            </button>
+            <button onClick={this.handleEditVis}>Edit</button>
+          </>
+        )}
+      </div>
+    );
+  }
 }
 
 export default Card;
