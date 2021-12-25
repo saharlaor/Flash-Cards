@@ -32,7 +32,7 @@ class Card extends Component {
             <p>{this.props.question}</p>
             <h3>Answer</h3>
             <p>{this.props.answer}</p>
-            <button onClick={() => this.props.handleDelete(this.props.id)}>
+            <button onClick={() => this.props.deleteHandler(this.props.id)}>
               Delete
             </button>
             <button onClick={this.handleEditVis}>Edit</button>

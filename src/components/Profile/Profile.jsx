@@ -13,7 +13,9 @@ export class Profile extends Component {
   }
 
   handleDelete = (id) => {
-    return;
+    const cards = this.state.cards.filter((card) => card.id !== id);
+    this.setState({ cards });
+    localStorage.setItem("cards", JSON.stringify(cards));
   };
 
   handleEdit = (id, card) => {
@@ -22,7 +24,7 @@ export class Profile extends Component {
     cards[cardIndex] = card;
     localStorage.setItem("cards", JSON.stringify(cards));
     console.log(cards);
-    this.setState({ cards: cards });
+    this.setState({ cards });
     return;
   };
 
@@ -35,6 +37,7 @@ export class Profile extends Component {
           key={card.id}
           id={card.id}
           editHandler={this.handleEdit}
+          deleteHandler={this.handleDelete}
         />
       );
     });
