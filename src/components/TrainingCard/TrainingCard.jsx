@@ -19,13 +19,13 @@ class TrainingCard extends Component {
       <div className="TrainingCard">
         {this.state.answerMode ? (
           <>
-            <p>{this.props.question}</p>
-            <button onClick={this.handleAnswerVis}>Reveal Answer</button>
+            <p>{this.props.answer}</p>
+            <button onClick={this.handleAnswerVis}>Show Question</button>
           </>
         ) : (
           <>
-            <p>{this.props.answer}</p>
-            <button onClick={this.handleAnswerVis}>Show Question</button>
+            <p>{this.props.question}</p>
+            <button onClick={this.handleAnswerVis}>Reveal Answer</button>
           </>
         )}
         <button onClick={this.props.incrementCard}>Next Card</button>
