@@ -8,6 +8,14 @@ import "./Profile.css";
 export class Profile extends Component {
   state = { cards: [] };
 
+  handleDelete = (id) => {
+    return;
+  };
+
+  handleEdit = (id, obj) => {
+    return;
+  };
+
   generateCards = () => {
     return this.state.cards.map((card, i) => {
       return <Card question={card.question} answer={card.answer} key={i} />;
