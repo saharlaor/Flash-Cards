@@ -6,7 +6,11 @@ import Create from "../Create/Create";
 import "./Profile.css";
 
 export class Profile extends Component {
-  state = { cards: [] };
+  constructor(props) {
+    super(props);
+    const cards = localStorage.cards;
+    this.state = { cards: cards ? JSON.parse(cards) : [] };
+  }
 
   handleDelete = (id) => {
     return;
@@ -23,6 +27,8 @@ export class Profile extends Component {
   };
 
   addCard = (card) => {
+    const cards = [...this.state.cards, card];
+    localStorage.setItem("cards", JSON.stringify(cards));
     this.setState((state) => {
       return { cards: [...state.cards, card] };
     });
