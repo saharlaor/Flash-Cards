@@ -16,7 +16,13 @@ export class Profile extends Component {
     return;
   };
 
-  handleEdit = (id, obj) => {
+  handleEdit = (id, card) => {
+    const cardIndex = this.state.cards.findIndex((card) => card.id === id);
+    const cards = [...this.state.cards];
+    cards[cardIndex] = card;
+    localStorage.setItem("cards", JSON.stringify(cards));
+    console.log(cards);
+    this.setState({ cards: cards });
     return;
   };
 
